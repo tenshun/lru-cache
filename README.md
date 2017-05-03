@@ -1,9 +1,16 @@
+# Purpose of the repository
+This repository contains a solution for the test task.
+
+Task:
+>"Create a configurable two-level cache (for caching Objects). Level 1 is memory, level 2 is filesystem. Config params should let one specify the cache strategies and max sizes of level 1 and 2"
+
+
 ## Theory:
 JVM Reference types
 
 ![alt text](http://2.bp.blogspot.com/-dponJrixU9Y/UzGXiXveSJI/AAAAAAAABVo/Lc3-d8ZsI2g/s1600/Weak+Strong+Soft+and+Phantom+Reference+in+Java.gif)
 
-LRU (least recently used) CACHE
+LRU (least recently used) cache
 
 ![alt text](http://2.bp.blogspot.com/-9emrB3ylgzE/Tyg-MAfvsEI/AAAAAAAAAzU/qJk63KHp5Xw/s1600/LinkedHashMap.png)
 ## Terminology
@@ -122,8 +129,23 @@ https://github.com/ben-manes/concurrentlinkedhashmap
 Caffeine is a high performance, near optimal caching library based on Java 8. For more details, see our user's guide and browse the API docs for the latest release.
 https://github.com/ben-manes/caffeine
 #### Custom implementation
-In summary
 
+##### Usage
+
+Parameters:
+IN_MEMORY_MAX_CAPACITY = 10000
+IN_MEMORY_DEFAULT_CAPACITY = 1000
+DEFAULT_NUMBER_OF_RETRIEVAL_OBJECTS = 3
+
+inMemoryCapacity - capacity of in memory cache, default value = IN_MEMORY_DEFAULT_CAPACITY
+
+1) Если элемент удален при переполнении кэша первого уровня, то он перемещается во второй уровент кэша
+2) при вызове метода recache получаем набор объект по уровню используемости, перемещаем наименее используемые в кэш второго уровня, удаляем из первого
+
+``` java
+
+
+```
 
 
 

@@ -1,22 +1,20 @@
 package com.tenshun.cache;
 
+import java.io.IOException;
 import java.util.Map;
 
 public interface Cache<K, V> {
 
-    V get(K key);
+    V get(K key)  throws IOException;
 
-    Map<K, V> getAllPresent(Iterable<K> keys);
+    void cache(K key, V value) throws IOException;
 
-    void put(K key, V value);
+    V remove(K key) throws IOException;
 
-    void putAll(Map<? extends K,? extends V> map);
+    int size();
 
-    void remove(K key);
+    boolean containsKey(K key);
 
-    default void invalidateAll(Iterable<K> keys) {
-        for (K key : keys) {
-            remove(key);
-        }
-    }
+    void clearCache();
+
 }

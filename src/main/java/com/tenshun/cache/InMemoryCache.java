@@ -3,24 +3,23 @@ package com.tenshun.cache;
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.util.*;
 
 
 /**
  * 03.05.2017.
  */
-public class InMemoryCache<K, V> implements Cache {
+public class InMemoryCache<K, V> implements Cache<K, V> {
 
     private static final Logger LOGGER = Logger.getLogger(InMemoryCache.class);
     private final static int CACHE_MAX_CAPACITY = 10000;
 
+    private final static int IN_MEMORY_DEFAULT_CAPACITY = 1000;
+    //DEFAULT_NUMBER_OF_RETRIEVAL_OBJECTS = 3
+
     private int capacity;
 
-
-
-    /* Old version:
-    private Map<K, V> myCache = Collections.synchronizedMap(new WeakHashMap<K, V>());
-     */
 
     Map<K, V> lruCache;
 
@@ -40,32 +39,33 @@ public class InMemoryCache<K, V> implements Cache {
     }
 
 
-
     @Override
-    public Object get(Object key) {
+    public V get(K key) throws IOException {
         return null;
     }
 
     @Override
-    public void put(Object key, Object value) {
+    public void cache(K key, V value) throws IOException {
 
     }
 
     @Override
-    public void putAll(Map map) {
-
-    }
-
-    @Override
-    public void remove(Object key) {
-
-    }
-
-
-    @Override
-    public Map getAllPresent(Iterable keys) {
+    public V remove(K key) throws IOException {
         return null;
     }
 
+    @Override
+    public int size() {
+        return 0;
+    }
 
+    @Override
+    public boolean containsKey(K key) {
+        return false;
+    }
+
+    @Override
+    public void clearCache() {
+
+    }
 }

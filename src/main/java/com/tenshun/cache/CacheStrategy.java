@@ -4,5 +4,5 @@ package com.tenshun.cache;
  * 03.05.2017.
  */
 public enum CacheStrategy {
-    FILE_SYSTEM_CACHE, IN_MEMORY_CACHE
+    ONLY_IN_MEMORY_CACHE, TWO_LEVELED_CACHE
 }
