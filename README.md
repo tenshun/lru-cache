@@ -305,15 +305,7 @@ inMemoryCache = new InMemoryCache<>(builder.capacity, (key, value) -> {
 ```
 
 
-inMemoryCapacity - capacity of in memory cache, default value = IN_MEMORY_DEFAULT_CAPACITY
-
-1) Если элемент удален при переполнении кэша первого уровня, то он перемещается во второй уровент кэша
-2) при вызове метода recache получаем набор объект по уровню используемости, перемещаем наименее используемые в кэш второго уровня, удаляем из первого
-
-``` java
-
-
-```
+**Взаимодействие между кэшами:** Если элемент удален при переполнении кэша первого уровня, то он перемещается во второй уровент кэша. Это позволяет получать доступ к менее используемым элементам, тогда как наиболее используемые всегда будут оставаться в памяти.
 
 
 #### How to run
@@ -327,5 +319,7 @@ $ gradle bootRun
 
 #### Useful links
 https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
+
 http://www.javaspecialist.ru/2012/02/java-lru-cache.html
+
 http://www.vldb.org/conf/1994/P439.PDF
