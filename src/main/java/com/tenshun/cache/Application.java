@@ -1,13 +1,13 @@
 package com.tenshun.cache;
 
-import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
-import com.googlecode.concurrentlinkedhashmap.EvictionListener;
+import com.tenshun.cache.caches.Cache;
+import com.tenshun.cache.caches.CacheStrategy;
+import com.tenshun.cache.caches.MainCache;
+import com.tenshun.cache.generators.ScrambledZipfianGenerator;
+import com.tenshun.cache.caches.FiniteLinkedHashMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * 03.05.2017.
@@ -23,29 +23,19 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        ScrambledZipfianGenerator generator = new ScrambledZipfianGenerator(100000);
 
-        EvictionListener<String, String> listener = (key, value) -> System.out.println("Evicted key=" + key + ", value=" + value);
-        ConcurrentLinkedHashMap<String, String> cache = new ConcurrentLinkedHashMap.Builder<String, String>()
-                .maximumWeightedCapacity(3)
-                .listener(listener)
+        Cache<Integer, Integer> cache = new MainCache.Builder<>()
+                .withStrategy(CacheStrategy.TWO_LEVEL_CACHE)
+                .capacity(100)
                 .build();
 
+        for(int i = 0; i < 200; i++){
+            cache.cache(generator.nextInt(), generator.nextInt());
+        }
 
+        cache.clearCache(); //expected empty cache folder
 
-        cache.put("key1", "value1");
-        cache.put("key2", "value2");
-        cache.put("key3", "value1");
-
-
-        String key1 = cache.get("key2");
-        String key2 = cache.get("key2");
-        String key3 = cache.get("key2");
-        String key4 = cache.get("key2");
-
-        Set<String> strings1 = cache.descendingKeySet();
-        Set<String> strings = cache.ascendingKeySet();
-        System.out.println(strings1);
-        System.out.println(strings);
 
     }
 }
