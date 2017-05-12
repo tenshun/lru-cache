@@ -1,13 +1,12 @@
 
-
-### Purpose of the repository
-
-
->"Create a configurable two-level cache (for caching Objects). Level 1 is memory, level 2 is filesystem. Config params should let one specify the cache strategies and max sizes of level 1 and 2"
-
 #### Special for Wiley.
 
 ## Theory:
+
+LRU (least recently used) cache
+
+![alt text](http://2.bp.blogspot.com/-9emrB3ylgzE/Tyg-MAfvsEI/AAAAAAAAAzU/qJk63KHp5Xw/s1600/LinkedHashMap.png)
+
 JVM Reference types
 
 #### Strong Reference Object
@@ -31,9 +30,6 @@ WeakReference<StringBuilder> weakBuilder = new WeakReference<StringBuilder>(buil
 
 ![alt text](http://2.bp.blogspot.com/-dponJrixU9Y/UzGXiXveSJI/AAAAAAAABVo/Lc3-d8ZsI2g/s1600/Weak+Strong+Soft+and+Phantom+Reference+in+Java.gif)
 
-LRU (least recently used) cache
-
-![alt text](http://2.bp.blogspot.com/-9emrB3ylgzE/Tyg-MAfvsEI/AAAAAAAAAzU/qJk63KHp5Xw/s1600/LinkedHashMap.png)
 ## Terminology
 ### Cache
 Wiktionary defines a cache as a store of things that will be required in the future, and can be retrieved rapidly. A cache is a collection of temporary data that either duplicates data located elsewhere or is the result of a computation. Data that is already in the cache can be repeatedly accessed with minimal costs in terms of time and resources.
