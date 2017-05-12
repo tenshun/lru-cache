@@ -313,6 +313,9 @@ $ gradle bootRun
 
 
 #### Useful links
+
+https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_.28LRU.29
+
 https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 
 http://www.javaspecialist.ru/2012/02/java-lru-cache.html
