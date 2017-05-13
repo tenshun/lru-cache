@@ -316,7 +316,11 @@ $ gradle bootRun
 
 https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_.28LRU.29
 
-https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
+[Write-through, write-around, write-back: Cache explained](http://www.computerweekly.com/feature/Write-through-write-around-write-back-Cache-explained)
+
+[Read-Through, Write-Through, Write-Behind, and Refresh-Ahead Caching](https://docs.oracle.com/cd/E15357_01/coh.360/e15723/cache_rtwtwbra.htm#COHDG5177)
+
+[Cache-Aside](https://docs.microsoft.com/en-us/azure/architecture/patterns/cache-aside)
 
 http://www.javaspecialist.ru/2012/02/java-lru-cache.html
 
