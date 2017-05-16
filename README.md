@@ -8,28 +8,6 @@ https://en.wikipedia.org/wiki/Page_replacement_algorithm#Least_recently_used
 
 ![alt text](http://2.bp.blogspot.com/-9emrB3ylgzE/Tyg-MAfvsEI/AAAAAAAAAzU/qJk63KHp5Xw/s1600/LinkedHashMap.png)
 
-### JVM Reference types
-
-#### Strong Reference Object
-
-```java
-StringBuilder builder = new StringBuilder();
-```
-#### Weak Reference Object
-
-```java
-WeakReference<StringBuilder> weakBuilder = new WeakReference<StringBuilder>(builder);
-```
-
-#### Levels of Weakness
-
->Two different levels of weakness can be enlisted: **soft** and **phantom**.
-
->A soft Reference Object is basically a weak Reference Object that remains in memory a bit more: normally, it resists GC cycle until memory is available and there is no risk of OutOfMemoryError (in that case, it can be removed).
-
->On the other hand, a phantom Reference Object is useful only to know exactly when an object has been effectively removed from memory: normally they are used to fix weird finalize() revival/resurrection behavior, since they actually do not return the object itself but only help in keeping track of their memory presence.
-
-![alt text](http://2.bp.blogspot.com/-dponJrixU9Y/UzGXiXveSJI/AAAAAAAABVo/Lc3-d8ZsI2g/s1600/Weak+Strong+Soft+and+Phantom+Reference+in+Java.gif)
 
 ## Terminology
 ### Cache
@@ -83,6 +61,29 @@ More precisely, the presence of a mapping for a given key will not prevent the k
 When a key has been discarded its entry is effectively removed from the map, so this class behaves somewhat differently from other Map implementations.
 
 >Like most collection classes, this class is not synchronized. A synchronized WeakHashMap may be constructed using the Collections.synchronizedMap method.
+
+### JVM Reference types
+
+#### Strong Reference Object
+
+```java
+StringBuilder builder = new StringBuilder();
+```
+#### Weak Reference Object
+
+```java
+WeakReference<StringBuilder> weakBuilder = new WeakReference<StringBuilder>(builder);
+```
+
+#### Levels of Weakness
+
+>Two different levels of weakness can be enlisted: **soft** and **phantom**.
+
+>A soft Reference Object is basically a weak Reference Object that remains in memory a bit more: normally, it resists GC cycle until memory is available and there is no risk of OutOfMemoryError (in that case, it can be removed).
+
+>On the other hand, a phantom Reference Object is useful only to know exactly when an object has been effectively removed from memory: normally they are used to fix weird finalize() revival/resurrection behavior, since they actually do not return the object itself but only help in keeping track of their memory presence.
+
+![alt text](http://2.bp.blogspot.com/-dponJrixU9Y/UzGXiXveSJI/AAAAAAAABVo/Lc3-d8ZsI2g/s1600/Weak+Strong+Soft+and+Phantom+Reference+in+Java.gif)
 
 Usage example:
 ```java
